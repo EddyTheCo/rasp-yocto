@@ -12,7 +12,7 @@ IMAGE_LINGUAS = "en-us"
 COMPATIBLE_MACHINE = "^rpi$"
 
 
-IMAGE_INSTALL:remove = " packagegroup-core-x11-base"
+IMAGE_INSTALL:remove = " packagegroup-core-x11-base connman"
 
 #IMAGE_INSTALL:append = " \
 #    qtbase \
@@ -61,10 +61,12 @@ IMAGE_INSTALL:remove = " packagegroup-core-x11-base"
 IMAGE_INSTALL:append = " \
   wpa-supplicant \
   dhcpcd \
+  iw \
+  iproute2 \
 "
 
 # ssh 
-#IMAGE_FEATURES += "ssh-server-dropbear"
+IMAGE_FEATURES += "ssh-server-dropbear"
 
 
 # blueetooth stuff
@@ -91,6 +93,7 @@ CMDLINE_LOGO:rpi = "logo.nologo quiet"
 DISABLE_OVERSCAN:rpi = "1"
 DISABLE_SPLASH:rpi = "1"
 DISABLE_RPI_BOOT_LOGO:rpi = "1"
+BOOT_DELAY:rpi = "0"
 LICENSE_FLAGS_ACCEPTED:rpi = "synaptics-killswitch"
 
 

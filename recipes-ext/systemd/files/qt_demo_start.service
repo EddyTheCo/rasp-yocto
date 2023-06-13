@@ -13,7 +13,7 @@ Environment=QT_QPA_PLATFORM=eglfs
 ExecStart=/usr/sbin/qt_demo_start.sh start
 RemainAfterExit=true
 ExecStop=/usr/sbin/qt_demo_start.sh stop
-#StandardOutput=journal
+StandardOutput=journal
 Restart=always
 RestartSec=1
 
