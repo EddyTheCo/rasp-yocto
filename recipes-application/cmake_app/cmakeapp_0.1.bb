@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=develop"
+SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "2b68c74651fb99b308d5e1096aeebed009a8afec"
+SRCREV = "2c0970808335f372f7a993f40111fd98aaba9aa5"
 
 
 S = "${WORKDIR}/git"
