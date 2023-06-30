@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "2c0970808335f372f7a993f40111fd98aaba9aa5"
+SRCREV = "318add078ebfeaa157bebb7cf0beec8ab24fda53"
 
 
 S = "${WORKDIR}/git"

@@ -4,7 +4,6 @@ LICENSE = "MIT"
 
 # Base this image on rpi-basic-image -> core-image-base
 require recipes-core/images/core-image-base.bb
-
 #IMAGE_FEATURES += " package-management"
 
 IMAGE_LINGUAS = "en-us"
@@ -57,16 +56,14 @@ IMAGE_INSTALL:remove = " packagegroup-core-x11-base connman"
 #   php-cli \
 # "
 
-# for WiFi client & access point
+# for WiFi client 
 IMAGE_INSTALL:append = " \
-  wpa-supplicant \
-  dhcpcd \
-  iw \
-  iproute2 \
+   wpa-supplicant \
+   dhcpcd \
 "
 
 # ssh 
-IMAGE_FEATURES += "ssh-server-dropbear"
+#IMAGE_FEATURES += "ssh-server-dropbear"
 
 
 # blueetooth stuff
@@ -85,16 +82,9 @@ IMAGE_FEATURES += "ssh-server-dropbear"
 
 # autostart Qt application
 IMAGE_INSTALL:append = " \
-  qtdemostart \
-  cmakeapp \	
+  cmakeapp \
+  startscript \	
 "
-
-CMDLINE_LOGO:rpi = "logo.nologo quiet"
-DISABLE_OVERSCAN:rpi = "1"
-DISABLE_SPLASH:rpi = "1"
-DISABLE_RPI_BOOT_LOGO:rpi = "1"
-BOOT_DELAY:rpi = "0"
-LICENSE_FLAGS_ACCEPTED:rpi = "synaptics-killswitch"
 
 
 export IMAGE_BASENAME = "qt6-evt-basic-image"

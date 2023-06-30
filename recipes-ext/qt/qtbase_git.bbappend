@@ -1,3 +1,3 @@
 #PACKAGECONFIG:append = " gui accessibility eglfs"
-PACKAGECONFIG:remove = " xcb"
+PACKAGECONFIG:remove = " xcb tests examples"
 

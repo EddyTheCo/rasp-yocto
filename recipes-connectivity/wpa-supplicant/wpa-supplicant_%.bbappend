@@ -1,22 +1,16 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI:append = " file://wpa_supplicant-wlan0.conf"
+SRC_URI += "file://wpa_supplicant-nl80211-wlan0.conf"
 
-FILES:${PN}:append = " ${sysconfdir}/wpa_supplicant/wpa_supplicant-wlan0.conf"
-
-
-do_install:append:mender-systemd() {
-
-  install -d ${D}${sysconfdir}/wpa_supplicant
+SYSTEMD_AUTO_ENABLE = "enable"
+SYSTEMD_SERVICE:${PN}:append = " wpa_supplicant-nl80211@wlan0.service  "
 
 
-	install -m 0755 ${WORKDIR}/wpa_supplicant-wlan0.conf ${D}${sysconfdir}/wpa_supplicant/wpa_supplicant-nl80211-wlan0.conf
+do_install:append() {
+   install -d ${D}${sysconfdir}/wpa_supplicant/
+   install -D -m 600 ${WORKDIR}/wpa_supplicant-nl80211-wlan0.conf ${D}${sysconfdir}/wpa_supplicant/
 
-  # Make sure the system directory for systemd exists.
-  install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
-
-  # Link the service file for autostart.
-  ln -s ${systemd_unitdir}/system/wpa_supplicant-nl80211@.service \
-  ${D}${sysconfdir}/systemd/system/multi-user.target.wants/wpa_supplicant-nl80211@wlan0.service
-
+   install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants/
+   ln -s ${systemd_unitdir}/system/wpa_supplicant@.service ${D}${sysconfdir}/systemd/system/multi-user.target.wants/wpa_supplicant-nl80211@wlan0.service
 }
+
