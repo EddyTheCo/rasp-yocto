@@ -1,0 +1,9 @@
+[Unit]
+Description=Main Qt application
+
+[Service]
+Environment=QT_QPA_EGLFS_HIDECURSOR=1
+ExecStart=server_main
+
+[Install]
+WantedBy=multi-user.target

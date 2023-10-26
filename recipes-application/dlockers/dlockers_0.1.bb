@@ -34,3 +34,16 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
+
+inherit systemd
+
+
+SYSTEMD_SERVICE:${PN} = "dlockers.service"
+
+SRC_URI  += " file://dlockers.service "
+FILES:${PN} += "${systemd_unitdir}/system/dlockers.service"
+
+do_install:append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/dlockers.service ${D}/${systemd_unitdir}/system
+}
