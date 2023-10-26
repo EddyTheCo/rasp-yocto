@@ -1,0 +1,42 @@
+# example configuration for a dialup connection authenticated with PAP or CHAP
+#
+# This is the default configuration used by pon(1) and poff(1).
+# See the manual page pppd(8) for information on all the options.
+
+# MUST CHANGE: replace myusername@realm with the PPP login name given to
+# your by your provider.
+# There should be a matching entry with the password in /etc/ppp/pap-secrets
+# and/or /etc/ppp/chap-secrets.
+#user ""
+
+# MUST CHANGE: replace ******** with the phone number of your provider.
+# The /etc/chatscripts/pap chat script may be modified to change the
+# modem initialization string.
+connect "/usr/sbin/chat -v -f /etc/chatscripts/pap"
+
+# Serial device to which the modem is connected.
+# https://www.waveshare.com/wiki/SIM7600X_4G_%26_LTE_Cat-1_HAT
+# 1) /dev/ttyUSB0-diag port for output developing messages
+# 2) /dev/ttyUSB1- NMEA port for GPS NMEA data output
+# 3) /dev/ttyUSB2-AT port for AT commands
+# 4) /dev/ttyUSB3-Modem port for ppp-dial
+# 5) /dev/ttyUSB4-Audio port
+
+/dev/ttyUSB3
+
+# Speed of the serial line.
+115200
+
+# Assumes that your IP address is allocated dynamically by the ISP.
+noipdefault
+# Try to get the name server addresses from the ISP.
+usepeerdns
+# Use this connection as the default route.
+defaultroute
+
+# Makes pppd "dial again" when the connection is lost.
+persist
+
+# Do not ask the remote to authenticate.
+noauth
+debug

@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/EddyTheCo/dhtxx.git;protocol=https;branch=use_cmake_lg"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "318add078ebfeaa157bebb7cf0beec8ab24fda53"
+SRCREV = "0bd0d15bec1c5978941356b35cd03d822bba4898"
 
 
 S = "${WORKDIR}/git"
@@ -15,15 +15,10 @@ DEPENDS = " \
     qtbase \
     qtdeclarative \
     qtdeclarative-native \
-    qtquick3d \
-    qtsvg \
-    qtwebsockets \
-    qtmqtt \
-    qtshadertools \
 "
 inherit qt6-cmake 
 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_TESTING=ON -DBUILD_SHARED_LIBS=ON"
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF" 
 do_configure[network] =  "1"
 do_compile[network] = "1"
 

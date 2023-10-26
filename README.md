@@ -1,6 +1,6 @@
-# meta-interelectronix-rpi-qt
+# meta-estervtech-rpi-qt
 
-This README file contains information on the contents of the meta-interelectronix-rpi-qt layer.
+This README file contains information on the contents of the meta-estervtech-rpi-qt layer.
 
 Please see the corresponding sections below for details.
 
@@ -20,7 +20,7 @@ Dependencies
 Patches
 =======
 
-Please submit any patches against the meta-interelectronix-rpi-qt layer to the xxxx mailing list (xxxx@zzzz.org)
+Please submit any patches against the meta-estervtech-rpi-qt layer to the xxxx mailing list (xxxx@zzzz.org)
 and cc: the maintainer:
 
 Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
@@ -28,16 +28,15 @@ Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
 Table of Contents
 =================
 
-  I. Adding the meta-interelectronix-rpi-qt layer to your build
+  I. Adding the meta-estervtech-rpi-qt layer to your build
  II. Misc
 
 
-I. Adding the meta-interelectronix-rpi-qt layer to your build
+I. Adding the meta-estervtech-rpi-qt layer to your build
 =================================================
 
-Run 'bitbake-layers add-layer meta-interelectronix-rpi-qt'
+Run 'bitbake-layers add-layer meta-estervtech-rpi-qt'
 
 II. Misc
 ========
 
---- replace with specific information about the meta-interelectronix-rpi-qt layer ---
