@@ -60,6 +60,7 @@ IMAGE_INSTALL:remove = " packagegroup-core-x11-base connman"
 IMAGE_INSTALL:append = " \
    wpa-supplicant \
    dhcpcd \
+   ppp \
 "
 
 # ssh 
@@ -82,8 +83,7 @@ IMAGE_INSTALL:append = " \
 
 # autostart Qt application
 IMAGE_INSTALL:append = " \
-  cmakeapp \
-  startscript \	
+  dlockers \
 "
 
 
