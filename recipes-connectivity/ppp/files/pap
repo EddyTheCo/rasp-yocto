@@ -13,6 +13,8 @@
 # OK 		'AT+CGDCONT=3,"IPV4V6","yourAPN"'
 # to set your apn if need it
 ""		ATZ
+OK              'AT+CGPS=1'
+OK              'AT+CGPSINFO'
 OK		'ATD*99***3#'
 CONNECT		''
 
