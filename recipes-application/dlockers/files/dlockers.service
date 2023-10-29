@@ -3,6 +3,7 @@ Description=Main Qt application
 
 [Service]
 Environment=QT_QPA_EGLFS_HIDECURSOR=1
+Environment=QML_IMPORT_PATH=@LIBDIR@/QMLPlugins
 ExecStart=server_main
 
 [Install]
