@@ -84,6 +84,8 @@ IMAGE_INSTALL:append = " \
 # autostart Qt application
 IMAGE_INSTALL:append = " \
   dlockers \
+  minicom \
+  ntp \
 "
 
 
