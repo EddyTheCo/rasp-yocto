@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/DLockersServer.git;protocol=https;branch=use_rpi"
+SRC_URI = "git://github.com/EddyTheCo/DLockersServer.git;protocol=https;branch=use_gps"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "1ce76f9405090a8a67ae899add9189c0df415526"
+SRCREV = "27f58687cdb07de5904b2c5cbeae44e7b451eab9"
 
 
 S = "${WORKDIR}/git"
@@ -20,10 +20,11 @@ DEPENDS = " \
     qtwebsockets \
     qtmqtt \
     qtshadertools \
+    qtpositioning \
 "
 inherit qt6-cmake 
 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_TESTING=ON -DRPI_SERVER=ON -DBUILD_SHARED_LIBS=ON" 
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_TESTING=ON -DRPI_SERVER=ON -DOpenCV_DOWNLOAD=OFF -DBUILD_SHARED_LIBS=ON" 
 do_configure[network] =  "1"
 do_compile[network] = "1"
 
@@ -34,16 +35,18 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
-
+FILES:${PN} += "${libdir}/QMLPlugins/*"
 inherit systemd
 
 
-SYSTEMD_SERVICE:${PN} = "dlockers.service"
+#SYSTEMD_SERVICE:${PN} = "dlockers.service"
 
 SRC_URI  += " file://dlockers.service "
 FILES:${PN} += "${systemd_unitdir}/system/dlockers.service"
 
 do_install:append() {
   install -d ${D}/${systemd_unitdir}/system
-  install -m 0644 ${WORKDIR}/dlockers.service ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/dlockers.service ${D}/${systemd_system_unitdir}/
+  sed -i -e 's,@LIBDIR@,${libdir},g' \
+               ${D}${systemd_system_unitdir}/dlockers.service
 }
