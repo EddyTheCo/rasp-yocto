@@ -7,15 +7,14 @@ Please see the corresponding sections below for details.
 Dependencies
 ============
 
-  URI: <first dependency>
-  branch: <branch name>
+	URI: https://git.openembedded.org/meta-openembedded
+	branch: mickledore
 
-  URI: <second dependency>
-  branch: <branch name>
+	URI: https://code.qt.io/cgit/yocto/meta-qt6.git/tree/
+	branch: 6.6
 
-  .
-  .
-  .
+	URI: https://github.com/agherzan/meta-raspberrypi
+	branch: mickledore
 
 Patches
 =======
