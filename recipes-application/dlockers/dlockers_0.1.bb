@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/DLockersServer.git;protocol=https;branch=use_gps"
+SRC_URI = "git://github.com/EddyTheCo/DLockersServer.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "27f58687cdb07de5904b2c5cbeae44e7b451eab9"
+SRCREV = "dc269a2cddfa8728ad9fe1727cf9e9b726ae5503"
 
 
 S = "${WORKDIR}/git"
@@ -21,6 +21,7 @@ DEPENDS = " \
     qtmqtt \
     qtshadertools \
     qtpositioning \
+    qtserialport \
 "
 inherit qt6-cmake 
 
@@ -35,11 +36,12 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
-FILES:${PN} += "${libdir}/QMLPlugins/*"
+FILES:${PN} += "${libdir}/libopencv*"
+
+
+
 inherit systemd
-
-
-#SYSTEMD_SERVICE:${PN} = "dlockers.service"
+SYSTEMD_SERVICE:${PN} = "dlockers.service"
 
 SRC_URI  += " file://dlockers.service "
 FILES:${PN} += "${systemd_unitdir}/system/dlockers.service"

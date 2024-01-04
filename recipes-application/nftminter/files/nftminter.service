@@ -1,11 +1,12 @@
 [Unit]
 Description=Main Qt application
-After=syslog.target network.target ntpd.service 
+After=syslog.target network.target 
 [Service]
 Environment=QT_QPA_EGLFS_HIDECURSOR=1
-Environment=QML_IMPORT_PATH=@LIBDIR@/QMLPlugins
+Environment=QML_IMPORT_PATH=@LIBDIR@
 Environment=QT_QPA_EGLFS_DEBUG=qt.qpa.input
-ExecStart=server_main
+Enviroment=QT_MEDIA_BACKEND=ffmpeg
+ExecStart=nftminter -style Esterv.Controls.Flat
 
 [Install]
 WantedBy=multi-user.target

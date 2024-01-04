@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=develop"
+SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "2a8039f2f4ddfa617e088d4ddaca4b0d6c5b497e"
+SRCREV = "65c26a711d2404814b45db340c2c5ababc069c42"
 
 
 S = "${WORKDIR}/git"
@@ -20,10 +20,11 @@ DEPENDS = " \
     qtwebsockets \
     qtmqtt \
     qtshadertools \
-    dlockers \
+    qtmultimedia \
+    qropencv \
 "
 inherit qt6-cmake 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_TESTING=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_FIND_DEBUG_MODE=ON"
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DQTDEPLOY=OFF -DBUILD_EXAMPLES=ON -DOpenCV_DOWNLOAD=OFF "
 do_configure[network] =  "1"
 do_compile[network] = "1"
 
@@ -34,3 +35,18 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
+FILES:${PN} += "${libdir}/Esterv/*"
+
+
+inherit systemd
+SYSTEMD_SERVICE:${PN} = "nftminter.service"
+
+SRC_URI  += " file://nftminter.service "
+FILES:${PN} += "${systemd_unitdir}/system/nftminter.service"
+
+do_install:append() {
+  install -d ${D}/${systemd_unitdir}/system
+  install -m 0644 ${WORKDIR}/nftminter.service ${D}/${systemd_system_unitdir}/
+  sed -i -e 's,@LIBDIR@,${libdir},g' \
+               ${D}${systemd_system_unitdir}/nftminter.service
+}
