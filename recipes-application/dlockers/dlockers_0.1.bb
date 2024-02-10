@@ -4,10 +4,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 
-SRC_URI = "git://github.com/EddyTheCo/DLockersServer.git;protocol=https;branch=main"
+SRC_URI = "git://github.com/EddyTheCo/DLockers.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "dc269a2cddfa8728ad9fe1727cf9e9b726ae5503"
+SRCREV = "4ea86a8896fe56fca81f2907d57ccca46b93fea3"
 
 
 S = "${WORKDIR}/git"
@@ -22,10 +22,13 @@ DEPENDS = " \
     qtshadertools \
     qtpositioning \
     qtserialport \
+    ntp \
+    qvault \
 "
 inherit qt6-cmake 
 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_TESTING=ON -DRPI_SERVER=ON -DOpenCV_DOWNLOAD=OFF -DBUILD_SHARED_LIBS=ON" 
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_CLIENT=OFF -DRPI_SERVER=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release"
+
 do_configure[network] =  "1"
 do_compile[network] = "1"
 
@@ -36,7 +39,7 @@ INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
 SOLIBS = ".so"
 FILES_SOLIBSDEV = ""
-FILES:${PN} += "${libdir}/libopencv*"
+FILES:${PN} += "${libdir}/Esterv/*"
 
 
 
