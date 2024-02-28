@@ -10,7 +10,6 @@
 # Uncomment the following line to see the connect speed.
 # It will be logged to stderr or to the file specified with the -r chat option.
 # add after ATZ 
-# OK 		'AT+CGDCONT=3,"IPV4V6","yourAPN"'
 # to set your apn if need it
 ""		ATZ
 OK              'AT+CGPS=1'

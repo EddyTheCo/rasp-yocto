@@ -15,8 +15,9 @@ IMAGE_INSTALL:remove = " packagegroup-core-x11-base connman"
 
 IMAGE_INSTALL:append = " \
    wpa-supplicant \
-   dhcpcd \
    ppp \
+   dhcpcd \
+   ntp \
 "
 
 export IMAGE_BASENAME = "qt6-evt-basic-image"

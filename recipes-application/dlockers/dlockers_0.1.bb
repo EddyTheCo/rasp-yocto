@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/EddyTheCo/DLockers.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "4ea86a8896fe56fca81f2907d57ccca46b93fea3"
+SRCREV = "5bc989563af63713ffffcb6128a9e7a827c464d8"
 
 
 S = "${WORKDIR}/git"
