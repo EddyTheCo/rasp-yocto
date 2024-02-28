@@ -3,9 +3,9 @@ Description=Main Qt application
 After=syslog.target network.target ntpd.service 
 [Service]
 Environment=QT_QPA_EGLFS_HIDECURSOR=1
-Environment=QML_IMPORT_PATH=@LIBDIR@/QMLPlugins
+Environment=QML_IMPORT_PATH=@LIBDIR@
 Environment=QT_QPA_EGLFS_DEBUG=qt.qpa.input
-ExecStart=server_main
+ExecStart=lockersServer -style Esterv.Controls.Flat
 
 [Install]
 WantedBy=multi-user.target

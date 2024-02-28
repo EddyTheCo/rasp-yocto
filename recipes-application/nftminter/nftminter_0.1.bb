@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = "git://github.com/EddyTheCo/NftMinter.git;protocol=https;branch=main"
 
 PV = "1.0.0+1.1+git${SRCPV}"
-SRCREV = "65c26a711d2404814b45db340c2c5ababc069c42"
+SRCREV = "184275be5d2dfa924e1167738807557fbae0cf37"
 
 
 S = "${WORKDIR}/git"
@@ -22,9 +22,11 @@ DEPENDS = " \
     qtshadertools \
     qtmultimedia \
     qropencv \
+    qvault \
 "
 inherit qt6-cmake 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DQTDEPLOY=OFF -DBUILD_EXAMPLES=ON -DOpenCV_DOWNLOAD=OFF "
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DQTDEPLOY=OFF "
+
 do_configure[network] =  "1"
 do_compile[network] = "1"
 
