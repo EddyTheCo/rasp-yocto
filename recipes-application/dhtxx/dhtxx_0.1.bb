@@ -16,9 +16,9 @@ DEPENDS = " \
     qtdeclarative \
     qtdeclarative-native \
 "
-inherit qt6-cmake 
+inherit qt6-cmake
 
-EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF" 
+EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF"
 do_configure[network] =  "1"
 do_compile[network] = "1"
 

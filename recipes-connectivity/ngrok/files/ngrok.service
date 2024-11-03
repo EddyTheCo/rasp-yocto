@@ -1,0 +1,12 @@
+
+[Unit]
+Description=Ngrok agent
+After=network.target
+[Service]
+ExecStart=ngrok start --config /etc/ngrok/ngrok.yml --all
+Restart=on-failure
+User=root
+WorkingDirectory=/etc/ngrok
+
+[Install]
+WantedBy=multi-user.target

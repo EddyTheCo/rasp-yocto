@@ -1,0 +1,11 @@
+[Unit]
+Description=Camera tcp server
+After=syslog.target network.target
+[Service]
+ExecStart=server
+Restart=on-failure
+User=root
+WorkingDirectory=/bin
+
+[Install]
+WantedBy=multi-user.target

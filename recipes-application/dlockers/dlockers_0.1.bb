@@ -25,7 +25,7 @@ DEPENDS = " \
     ntp \
     qvault \
 "
-inherit qt6-cmake 
+inherit qt6-cmake
 
 EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DBUILD_CLIENT=OFF -DRPI_SERVER=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release"
 

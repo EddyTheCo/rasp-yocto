@@ -21,10 +21,12 @@ DEPENDS = " \
     qtmqtt \
     qtshadertools \
     qtmultimedia \
-    qropencv \
+    opencv \
     qvault \
 "
-inherit qt6-cmake 
+PACKAGECONFIG:append:opencv = " objdetect imgproc flann features2d calib3d quirc"
+
+inherit qt6-cmake
 EXTRA_OECMAKE:append = "-G Ninja -DFETCHCONTENT_FULLY_DISCONNECTED=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DQTDEPLOY=OFF "
 
 do_configure[network] =  "1"

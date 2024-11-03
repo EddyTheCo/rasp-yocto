@@ -1,0 +1,2 @@
+recipes-connectivity/wpa-supplicant/files/wpa_supplicant-nl80211-wlan0.conf
+recipes-connectivity/ngrok/files/ngrok.yml
